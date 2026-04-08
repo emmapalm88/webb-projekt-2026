@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import productsRouter from "./routes/products.js";
 import authRouter from "./routes/auth.js";
+import eventsRouter from "./routes/events.js"; // ✅ NY
 import cors from "cors";
 
 const app = express();
@@ -39,6 +40,6 @@ app.get("/health", (req, res) => {
 
 app.use("/products", productsRouter);
 app.use("/auth", authRouter);
-//TODO: Add more routes as needed
+app.use("/events", eventsRouter); // ✅ DENNA ÄR HELA GREJEN
 
 export default app;
