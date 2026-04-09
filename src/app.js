@@ -42,6 +42,7 @@ app.get("/health", (req, res) => {
 
 app.use("/products", productsRouter);
 app.use("/auth", authRouter);
+app.use("/events", eventsRouter);
 //TODO: Add more routes as needed
 
 export default app;
