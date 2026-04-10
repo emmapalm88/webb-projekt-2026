@@ -3,7 +3,7 @@ import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import productsRouter from "./routes/products.js";
+//import productsRouter from "./routes/products.js";
 import authRouter from "./routes/auth.js";
 import eventsRouter from "./routes/events.js";
 import bookingsRouter from "./routes/bookings.js";
@@ -23,7 +23,7 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
-app.use("/products", productsRouter);
+//app.use("/products", productsRouter);
 app.use("/auth", authRouter);
 app.use("/events", eventsRouter);
 app.use("/bookings", bookingsRouter);
