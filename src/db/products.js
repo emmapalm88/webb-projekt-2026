@@ -1,4 +1,4 @@
-import Product from "../models/Product.js";
+/*import Product from "../models/Product.js";
 
 export async function getProducts() {
   return await Product.find();
@@ -15,4 +15,4 @@ export async function createProduct(productData) {
     }
 }
 
-//TODO: Add more functions as needed
+//TODO: Add more functions as needed*/
