@@ -1,4 +1,4 @@
-/*import { Router } from "express";
+import { Router } from "express";
 import { validateProduct, validateProductResult } from "../middleware/productValidation.js";
 import { getProducts, createProduct } from "../db/products.js";
 const router = Router();
@@ -20,4 +20,4 @@ router.post("/", validateProduct, validateProductResult, async (req, res) => {
 //TODO PUT /products/:slug
 
 //TODO DELETE /products/:slug
-export default router;*/
+export default router;

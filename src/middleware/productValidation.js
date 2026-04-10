@@ -1,4 +1,4 @@
-/*import { body, validationResult } from "express-validator";
+import { body, validationResult } from "express-validator";
 
 export const validateProduct = [
   body("name").notEmpty().withMessage("Name is required"),
@@ -15,4 +15,4 @@ export const validateProductResult = (req, res, next) => {
     return res.status(400).json({ errors: errors.array() });
   }
   next();
-};*/
+};
