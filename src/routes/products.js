@@ -1,4 +1,4 @@
-import { Router } from "express";
+/*import { Router } from "express";
 import { validateProduct, validateProductResult } from "../middleware/productValidation.js";
 import { getProducts, createProduct } from "../db/products.js";
 const router = Router();
