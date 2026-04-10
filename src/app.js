@@ -2,7 +2,6 @@ console.log("ENV TEST:", process.env.MONGODB_URI);
 import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
-import productsRouter from "./routes/products.js";
 import authRouter from "./routes/auth.js";
 import cors from "cors";
 import eventsRouter from "./routes/events.js";
@@ -45,7 +44,6 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
-app.use("/products", productsRouter);
 app.use("/auth", authRouter);
 app.use("/events", eventsRouter);
 app.use("/bookings", bookingsRouter);
