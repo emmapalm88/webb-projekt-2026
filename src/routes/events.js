@@ -53,7 +53,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST skapa event
-router.post("/", isAdmin, async (req, res) => {
+router.post("/",  async (req, res) => {
   try {
     const safeData = filterUpdates(req.body);
     const event = new Event(safeData);
@@ -66,7 +66,7 @@ router.post("/", isAdmin, async (req, res) => {
 });
 
 // PUT uppdatera event
-router.put("/:id", isAdmin, async (req, res) => {
+router.put("/:id",  async (req, res) => {
   try {
     const safeUpdates = filterUpdates(req.body);
 
@@ -101,7 +101,7 @@ router.put("/:id", isAdmin, async (req, res) => {
 });
 
 // PATCH uppdatera delar av event
-router.patch("/:id", isAdmin, async (req, res) => {
+router.patch("/:id",  async (req, res) => {
   try {
     const safeUpdates = filterUpdates(req.body);
 
@@ -138,7 +138,7 @@ router.patch("/:id", isAdmin, async (req, res) => {
 
 
 // DELETE event
-router.delete("/:id", isAdmin, async (req, res) => {
+router.delete("/:id",  async (req, res) => {
   try {
     const event = await Event.findByIdAndDelete(req.params.id);
 
