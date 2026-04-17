@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { validateRegister, validateAuthResult } from "../middleware/authValidation.js";
 import { createUser, findUserByEmail } from "../db/users.js";
+import { connectToDatabase } from "../config/database.js";
 
 const router = Router();
 
@@ -10,6 +11,7 @@ router.post(
   validateAuthResult,
   async (req, res) => {
     try {
+       await connectToDatabase(); 
       const { name, email, password } = req.body;
 
       const existingUser = await findUserByEmail(email);

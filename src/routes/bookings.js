@@ -1,12 +1,14 @@
 import express from "express";
 import Booking from "../models/bookingModel.js";
 import Event from "../models/Event.js";
+import { connectToDatabase } from "../config/database.js";
 
 const router = express.Router();
 
 // CREATE booking
 router.post("/", async (req, res) => {
   try {
+     await connectToDatabase(); 
     const { name, email, event, quantity = 1 } = req.body;
 
     // 1. Check event exists
@@ -59,6 +61,7 @@ router.post("/", async (req, res) => {
 // GET bookings for an event
 router.get("/event/:eventId", async (req, res) => {
   try {
+     await connectToDatabase(); 
     const bookings = await Booking.find({ event: req.params.eventId })
       .populate("event");
 
@@ -72,6 +75,7 @@ router.get("/event/:eventId", async (req, res) => {
 // DELETE booking
 router.delete("/:id", async (req, res) => {
   try {
+     await connectToDatabase(); 
     const booking = await Booking.findById(req.params.id);
 
     if (!booking) {

@@ -3,6 +3,7 @@ import Event from "../models/Event.js";
 import { connectToDatabase } from "../config/database.js";
 /*  */ import { isAdmin } from "../middleware/auth.js";
 
+
 const allowedFields = [
   "title",
   "description",
@@ -43,6 +44,7 @@ router.get("/", async (req, res) => {
 // GET ett event
 router.get("/:id", async (req, res) => {
   try {
+     await connectToDatabase(); 
     const event = await Event.findById(req.params.id);
 
     if (!event) {
@@ -58,6 +60,7 @@ router.get("/:id", async (req, res) => {
 // POST skapa event
 router.post("/",  async (req, res) => {
   try {
+     await connectToDatabase(); 
     const safeData = filterUpdates(req.body);
     const event = new Event(safeData);
     await event.save();
@@ -71,6 +74,7 @@ router.post("/",  async (req, res) => {
 // PUT uppdatera event
 router.put("/:id",  async (req, res) => {
   try {
+     await connectToDatabase(); 
     const safeUpdates = filterUpdates(req.body);
 
     const existingEvent = await Event.findById(req.params.id);
@@ -106,6 +110,7 @@ router.put("/:id",  async (req, res) => {
 // PATCH uppdatera delar av event
 router.patch("/:id",  async (req, res) => {
   try {
+     await connectToDatabase(); 
     const safeUpdates = filterUpdates(req.body);
 
     const existingEvent = await Event.findById(req.params.id);
@@ -143,6 +148,7 @@ router.patch("/:id",  async (req, res) => {
 // DELETE event
 router.delete("/:id",  async (req, res) => {
   try {
+     await connectToDatabase(); 
     const event = await Event.findByIdAndDelete(req.params.id);
 
     if (!event) {
