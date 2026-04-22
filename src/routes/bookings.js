@@ -2,11 +2,12 @@ import express from "express";
 import Booking from "../models/bookingModel.js";
 import Event from "../models/Event.js";
 import { connectToDatabase } from "../config/database.js";
+import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
 // CREATE booking
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   try {
      await connectToDatabase(); 
     const { name, email, event, quantity = 1 } = req.body;

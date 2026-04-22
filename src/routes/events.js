@@ -67,7 +67,7 @@ router.post("/", verifyToken, isAdmin, async (req, res) => {
 });
 
 // PUT uppdatera event
-router.put("/:id",  async (req, res) => {
+router.put("/:id", verifyToken, isAdmin, async (req, res) => {
   try {
      await connectToDatabase(); 
     const safeUpdates = filterUpdates(req.body);
@@ -103,7 +103,7 @@ router.put("/:id",  async (req, res) => {
 });
 
 // PATCH uppdatera delar av event
-router.patch("/:id",  async (req, res) => {
+router.patch("/:id", verifyToken, isAdmin, async (req, res) => {
   try {
      await connectToDatabase(); 
     const safeUpdates = filterUpdates(req.body);

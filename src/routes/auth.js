@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { connectToDatabase } from "../config/database.js";
 import { createUser, findUserByEmail } from "../db/users.js";
 import { validateRegister, validateAuthResult } from "../middleware/authValidation.js";
+import { verifyToken } from "../middleware/auth.js";
 
 const router = Router();
 
@@ -88,6 +89,27 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+router.post("/refresh", verifyToken, async (req, res) => {
+  try {
+    // Since token is valid (passed verifyToken), generate new one
+    const newToken = jwt.sign(
+      { id: req.user.id, role: req.user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    res.json({ token: newToken });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.post("/logout", verifyToken, async (req, res) => {
+  // For stateless JWT, logout is handled client-side by removing token
+  // In a real app, you might blacklist tokens here
+  res.json({ message: "Logged out successfully" });
 });
 
 
