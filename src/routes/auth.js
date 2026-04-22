@@ -93,7 +93,7 @@ router.post("/login", async (req, res) => {
 
 router.post("/refresh", verifyToken, async (req, res) => {
   try {
-    // Since token is valid (passed verifyToken), generate new one
+   
     const newToken = jwt.sign(
       { id: req.user.id, role: req.user.role },
       process.env.JWT_SECRET,
@@ -107,8 +107,7 @@ router.post("/refresh", verifyToken, async (req, res) => {
 });
 
 router.post("/logout", verifyToken, async (req, res) => {
-  // For stateless JWT, logout is handled client-side by removing token
-  // In a real app, you might blacklist tokens here
+  
   res.json({ message: "Logged out successfully" });
 });
 
