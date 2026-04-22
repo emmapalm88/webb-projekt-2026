@@ -10,7 +10,8 @@ const allowedFields = [
   "price",
   "location",
   "totalSpots",
-  "category"
+  "category",
+  "image"
 ];
 
 function filterUpdates(body) {
