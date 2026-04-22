@@ -7,7 +7,7 @@ import { verifyToken } from "../middleware/auth.js";
 const router = express.Router();
 
 // CREATE booking
-router.post("/", verifyToken, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
      await connectToDatabase(); 
     const { name, email, event, quantity = 1 } = req.body;

@@ -142,7 +142,7 @@ router.patch("/:id", verifyToken, isAdmin, async (req, res) => {
 
 
 // DELETE event
-router.delete("/:id",  async (req, res) => {
+router.delete("/:id", verifyToken, isAdmin, async (req, res) => {
   try {
      await connectToDatabase(); 
     const event = await Event.findByIdAndDelete(req.params.id);
